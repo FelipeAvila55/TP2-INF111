@@ -1,7 +1,9 @@
 package Blocnotes;
+
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ActionMap;
@@ -11,6 +13,11 @@ import javax.swing.KeyStroke;
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
 import javax.swing.undo.UndoManager;
+
+
+
+
+
 
 /**
  * Classe JTextPaneYZ
@@ -28,9 +35,14 @@ import javax.swing.undo.UndoManager;
 
 public class JTextPaneCtrlYZ extends JTextPane {
 
+
+	//déclaration des attributs:
 	protected UndoManager undoManager;
 	private InputMap inputMap;
 	private ActionMap actionMap;
+
+
+
 
 	/**
 	 * Constructeur de JTextPaneCtrlYZ
@@ -38,7 +50,12 @@ public class JTextPaneCtrlYZ extends JTextPane {
 	 * Initialise le JTextPane avec un gestionnaire d'annulation (UndoManager) et
 	 * configure les raccourcis clavier pour les actions "Undo" et "Redo".
 	 */
+
+
 	
+	 /*
+	  * Constructeur par de défaut de JText
+	  */
 	public JTextPaneCtrlYZ() {
 
 		super();
@@ -57,6 +74,7 @@ public class JTextPaneCtrlYZ extends JTextPane {
 	private void actionListeners() {
 	
 		
+
 		/**
 		 * Méthode pour ajouter un UndoableEditListener pour suivre les modifications et
 		 * les enregistrer dans l'UndoManager
@@ -69,6 +87,7 @@ public class JTextPaneCtrlYZ extends JTextPane {
 		});
 
 		
+
 		
 		// Pour configurer les raccourcis clavier "Undo" (Ctrl+Z) et "Redo" (Ctrl+Y)
 		inputMap = this.getInputMap(JTextPane.WHEN_FOCUSED);
@@ -76,6 +95,7 @@ public class JTextPaneCtrlYZ extends JTextPane {
 
 		
 		
+
 		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK), "Undo");
 		inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_Y, KeyEvent.CTRL_DOWN_MASK), "Redo");
 
@@ -106,6 +126,7 @@ public class JTextPaneCtrlYZ extends JTextPane {
 
 				if (undoManager.canRedo())
 					undoManager.redo();
+					
 			}
 		});
 		
