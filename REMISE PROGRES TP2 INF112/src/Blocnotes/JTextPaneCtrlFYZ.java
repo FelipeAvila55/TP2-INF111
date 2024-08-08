@@ -1,7 +1,13 @@
 package Blocnotes;
+
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+
+
+
+
 
 /**
  * Classe JTextPaneCtrlFYZ
@@ -17,34 +23,75 @@ import java.awt.event.KeyEvent;
  */
 public class JTextPaneCtrlFYZ extends JTextPaneCtrlYZ {
 
+
+
+    
+    //déclaration de l'attribut:
     private JTextPaneCtrlF findHelper;
 
+
+
+
+
+
     /**
-     * Constructeur de JTextPaneCtrlFYZ
+     * Constructeur par défaut de JTextPaneCtrlFYZ
      *
      * Initialise le JTextPane avec un gestionnaire d'annulation (UndoManager) et
      * configure les raccourcis clavier pour les actions "Undo", "Redo" et "Find".
      */
     public JTextPaneCtrlFYZ() {
     	
+
+    
+        // Appel du constructeur de la superclasse (JTextPane) pour initialiser correctement le JTextPane.        
         super();
+
+
+        // Crée une instance de JTextPaneCtrlF
         findHelper = new JTextPaneCtrlF();
+
+
+      // Appelle une méthode définie ailleurs dans cette classe pour configurer le raccourci clavier pour la recherche.       
         configureFindKeyBinding();
+
     }
+
+
+
+
+
 
     /**
      * Configure les raccourcis clavier pour l'action de recherche (Ctrl+F)
      */
     private void configureFindKeyBinding() {
+
+
+        // Accède à l'InputMap du JTextPane lorsque celui-ci est focalisé.
         InputMap inputMap = this.getInputMap(JTextPane.WHEN_FOCUSED);
+
+
+        // Accède à l'ActionMap du JTextPane.
         ActionMap actionMap = this.getActionMap();
 
+
+        // Associe la combinaison de touches Ctrl+F (KeyCode F avec le modificateur Ctrl enfoncé)
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK), "Find");
 
+
+        // Associe l'identifiant "Find" à une action spécifique dans l'ActionMap.
         actionMap.put("Find", new AbstractAction() {
+
+
+
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
+               // Cette méthode est appelée lorsque le raccourci Ctrl+F est utilisé.               
                 findHelper.showFindDialog();
+
             }
         });
     }
